@@ -48,10 +48,10 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   const id = req.params.id;
   try {
-    Task.findByIdAndDelete(id);
+    await Task.findByIdAndDelete(id);
     res.json({});
   } catch (error) {
     next(error);
